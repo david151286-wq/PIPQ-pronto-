@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#f5f3ed">
+<meta name="description" content="Bíblia, hinário e informações da PIPQ - um sonho de igreja">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icons/favicon.png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<title>PIPQ — Primeira Igreja Presbiteriana em Queimados</title>
+<style>
+:root{color-scheme:light;--page:#f5f3ed;--surface:#fffefa;--soft:#eeeee7;--ink:#1c2430;--muted:#5b6270;--line:#e0dfd6;--pine:#143a73;--pine-soft:#dde6f4;--gold:#8f6a2f;--on-pine:#fff;--h1:#01224d;--h2:#143a73;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){color-scheme:dark;--page:#0f1626;--surface:#172036;--soft:#1f2a44;--ink:#edf0e8;--muted:#aeb8cc;--line:#2d3a58;--pine:#9fc0f0;--pine-soft:#26344d;--gold:#d5b578;--on-pine:#0f1626;--h1:#12306a;--h2:#1d4a8f}}
+:root[data-theme="dark"]{color-scheme:dark;--page:#0f1626;--surface:#172036;--soft:#1f2a44;--ink:#edf0e8;--muted:#aeb8cc;--line:#2d3a58;--pine:#9fc0f0;--pine-soft:#26344d;--gold:#d5b578;--on-pine:#0f1626;--h1:#12306a;--h2:#1d4a8f}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--page);color:var(--ink);font:16px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--surface);z-index:10}
+[hidden]{display:none!important}
+button,input{font:inherit;color:inherit}
+.app{max-width:480px;min-height:100dvh;margin:0 auto;padding-bottom:96px}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;display:flex;align-items:center;justify-content:space-between;padding:10px 16px;background:var(--surface);border-bottom:1px solid var(--line)}
+.brand{display:flex;align-items:center;gap:10px}
+.brand strong{display:block;font:700 15px/1.2 Georgia,serif}
+.brand small{color:var(--muted);font-size:13px}
+.ib{display:grid;place-items:center;width:44px;height:44px;border:0;border-radius:50%;background:none;cursor:pointer}
+.ib:hover{background:var(--soft)}
+svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+main{padding:16px}
+h1{margin:0;font:600 26px/1.2 Georgia,serif}
+h2{margin:24px 2px 10px;font:600 19px Georgia,serif}
+.eyebrow{color:var(--gold);font-size:13px;font-weight:700;letter-spacing:1px;text-transform:uppercase}
+.lead{margin:6px 0 16px;color:var(--muted)}
+.hero{padding:18px;border-radius:16px;background:linear-gradient(125deg,var(--h1),var(--h2));color:#fff}
+.hero h2{margin:0 0 8px;color:#fff}
+.card{padding:14px;border:1px solid var(--line);border-radius:14px;background:var(--surface)}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
+.act{display:flex;flex-direction:column;align-items:flex-start;gap:8px;padding:14px;border:1px solid var(--line);border-radius:14px;background:var(--surface);color:var(--ink);text-decoration:none;font-weight:600;cursor:pointer;text-align:left}
+.act svg{color:var(--pine)}
+.row{display:flex;justify-content:space-between;gap:12px;padding:9px 0;border-bottom:1px solid rgba(128,128,128,.25)}
+.row:last-child{border:0}
+.row span:last-child{opacity:.9;text-align:right}
+.hero .row{border-color:rgba(255,255,255,.25)}
+.search{display:flex;align-items:center;gap:10px;height:48px;padding:0 14px;margin:0 0 14px;border:1px solid var(--line);border-radius:13px;background:var(--surface)}
+.search input{flex:1;min-width:0;border:0;outline:0;background:none}
+.search input::placeholder{color:var(--muted)}
+.chips{display:flex;gap:8px;margin-bottom:12px}
+.chip{padding:9px 16px;border:1px solid var(--line);border-radius:22px;background:var(--surface);cursor:pointer;font-size:14px}
+.chip[aria-pressed="true"]{background:var(--pine);border-color:var(--pine);color:var(--on-pine)}
+details{margin-bottom:8px;border:1px solid var(--line);border-radius:14px;background:var(--surface)}
+summary{display:flex;justify-content:space-between;align-items:center;min-height:48px;padding:10px 14px;font-weight:600;cursor:pointer}
+summary small{color:var(--muted);font-weight:400;font-size:13px}
+.ch{display:grid;grid-template-columns:repeat(auto-fill,minmax(46px,1fr));gap:6px;padding:4px 12px 14px}
+.ch a{display:grid;place-items:center;height:42px;border-radius:10px;background:var(--pine-soft);color:var(--pine);font-weight:600;text-decoration:none}
+.song{display:flex;align-items:center;gap:10px;padding:10px 4px;border-bottom:1px solid var(--line);list-style:none}
+ul{margin:0;padding:0}
+.num{width:38px;color:var(--pine);font-weight:700;font-size:14px}
+.song div{flex:1;min-width:0}
+.song strong{display:block}
+.song small{color:var(--muted);font-size:13px}
+.star{width:44px;height:44px;display:grid;place-items:center;border:0;background:none;color:var(--muted);cursor:pointer}
+.star[aria-pressed="true"]{color:var(--gold)}
+.star[aria-pressed="true"] svg{fill:currentColor}
+.empty,.note{color:var(--muted);font-size:14px;padding:12px 2px}
+.tag{padding:3px 10px;border-radius:12px;background:var(--gold);color:var(--page);font-size:12px;font-weight:700}
+nav{position:fixed;z-index:6;bottom:0;left:50%;width:min(100%,480px);transform:translateX(-50%);display:flex;padding:6px 4px calc(6px + env(safe-area-inset-bottom,0px));background:var(--surface);border-top:1px solid var(--line)}
+nav a{flex:1;display:grid;justify-items:center;gap:2px;padding:4px 0;color:var(--muted);font-size:12px;text-decoration:none}
+nav a[aria-current]{color:var(--pine);font-weight:700}
+#toast{position:fixed;z-index:11;left:50%;bottom:92px;max-width:88%;padding:10px 16px;transform:translate(-50%,10px);border-radius:22px;background:var(--ink);color:var(--page);font-size:14px;text-align:center;opacity:0;pointer-events:none;transition:.2s}
+#toast.show{opacity:1;transform:translate(-50%,0)}
+a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+.mark{width:42px;height:42px;border-radius:10px;display:block;flex:none}
+.brand>div{min-width:0}.brand strong,.brand small{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.song a{flex:1;display:flex;align-items:center;gap:10px;min-width:0;color:inherit;text-decoration:none}
+.num{width:auto!important;min-width:44px}
+a.chip{display:inline-block;color:inherit;text-decoration:none}
+.tools{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:0 0 14px}.tools .chip{min-height:40px}
+.vs p{margin:0 0 .6em;padding:2px 6px;border-radius:8px;font:calc(var(--fs,18)*1px)/1.6 Georgia,serif}
+.vs sup{margin-right:5px;color:var(--gold);font:700 .6em system-ui}
+.vs p.sel{background:var(--pine-soft)}.vs p.hl{outline:2px solid var(--gold)}
+.lyr{white-space:pre-line;font:calc(var(--fs,18)*1px)/1.7 Georgia,serif}
+.pn{display:flex;justify-content:space-between;gap:8px;margin-top:18px}
+.res{display:block;padding:10px 4px;border-bottom:1px solid var(--line);color:inherit;text-decoration:none}.res span{display:block;color:var(--muted);font-size:14px}
+#bcont{margin-bottom:12px}.rt{margin:0 0 10px!important}
+</style>
+</head>
+<body>
+<div class="app">
+<header>
+  <div class="brand"><img class="mark" src="icons/logo-mark.png" alt="Logo da PIPQ" width="42" height="42"><div><strong>Primeira Igreja Presbiteriana</strong><small>Queimados · RJ</small></div></div>
+  <button class="ib" id="theme" aria-label="Alternar tema claro e escuro"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M21 13A9 9 0 1111 3a7 7 0 0010 10z"/></svg></button>
+</header>
+<main>
+<section id="inicio">
+  <div class="eyebrow">Palavra para o caminho</div>
+  <h1>Bem-vindo à PIPQ</h1>
+  <p class="lead">Leia, cante e cresça na graça de Deus conosco.</p>
+  <div class="hero"><h2>Nossos cultos</h2><div class="hor"></div></div>
+  <div class="grid">
+    <a class="act" href="#biblia"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M4 5h6a2 2 0 012 2v12a2 2 0 00-2-2H4zM20 5h-6a2 2 0 00-2 2v12a2 2 0 012-2h6z"/></svg>Bíblia</a>
+    <a class="act" href="#hinario"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M9 18V5l11-2v13M9 18a3 3 0 11-6 0 3 3 0 016 0zm11-2a3 3 0 11-6 0 3 3 0 016 0z"/></svg>Hinário</a>
+    <a class="act" id="wa1" target="_blank" rel="noopener"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M21 12a8 8 0 01-12 7l-5 1 1-4.5A8 8 0 1121 12z"/></svg>WhatsApp</a>
+    <a class="act" href="#igreja"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M12 21s7-6.5 7-12a7 7 0 10-14 0c0 5.5 7 12 7 12zM12 11.5a2.5 2.5 0 100-5 2.5 2.5 0 000 5z"/></svg>Como chegar</a>
+  </div>
+</section>
+
+<section id="biblia" hidden>
+  <div class="eyebrow" id="bver"></div>
+  <h1>Bíblia</h1>
+  <div class="chips" id="bvs" style="margin-top:10px"><button class="chip" data-v="ara">ARA</button><button class="chip" data-v="naa">NAA</button></div>
+  <div id="bhome"><div id="bcont"></div><label class="search"><svg aria-hidden="true" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg><input id="bq" type="search" placeholder="Livro, referência (jo 3:16) ou palavra" aria-label="Buscar na Bíblia"></label><div id="br"></div><div id="bl"></div></div>
+  <div id="bc" hidden></div>
+</section>
+
+<section id="hinario" hidden>
+  <div id="hhome">
+  <div class="eyebrow">Novo Cântico</div>
+  <h1>Hinário</h1>
+  <p class="lead">Hinos para a devoção pessoal e o culto.</p>
+  <label class="search"><svg aria-hidden="true" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg><input id="hq" type="search" placeholder="Número, título ou trecho da letra" aria-label="Buscar hino"></label>
+  <div class="chips"><button class="chip" id="fav" aria-pressed="false">Somente favoritos</button></div>
+  <ul id="hl"><li class="empty">Carregando…</li></ul>
+  <p class="empty" id="hempty" hidden>Nenhum hino encontrado.</p></div>
+  <div id="hd" hidden></div>
+</section>
+
+<section id="estudo" hidden>
+  <div class="eyebrow">Confissões e catecismos</div>
+  <h1>Estudo</h1>
+  <p class="lead">Conheça a herança da fé reformada.</p>
+  <h2>Símbolos de Fé</h2>
+  <div class="card"><div class="row"><span>Confissão de Fé de Westminster<br><small>33 capítulos</small></span><span class="tag">Em breve</span></div>
+  <div class="row"><span>Catecismo Maior<br><small>196 perguntas e respostas</small></span><span class="tag">Em breve</span></div>
+  <div class="row"><span>Breve Catecismo<br><small>107 perguntas e respostas</small></span><span class="tag">Em breve</span></div></div>
+</section>
+
+<section id="igreja" hidden>
+  <div class="eyebrow">Primeira Igreja Presbiteriana em Queimados</div>
+  <h1>Igreja</h1>
+  <p class="lead">Horários, contato e contribuições.</p>
+  <h2>Horários</h2><div class="card hor"></div>
+  <h2>Endereço</h2><div class="card"><p id="end" style="margin:0 0 10px"></p><a class="act" id="map" target="_blank" rel="noopener">Abrir no mapa</a></div>
+  <h2>Contato</h2><a class="act" id="wa2" target="_blank" rel="noopener">Falar pelo WhatsApp</a>
+  <h2>Aplicativo</h2><div class="card"><p class="note" id="off" style="margin:0 0 10px">Para usar sem internet, abra o site uma vez conectado. No iPhone: Compartilhar › Adicionar à Tela de Início.</p><button class="act" id="inst" hidden>Instalar no celular</button></div>
+  <h2>Dízimos e ofertas</h2><div class="card"><p style="margin:0 0 4px" class="note">Chave PIX</p><strong id="pixk"></strong><div style="margin-top:12px"><button class="act" id="pix">Copiar chave PIX</button></div></div>
+</section>
+</main>
+<nav id="nav" aria-label="Navegação principal"></nav>
+<div id="toast" role="status" aria-live="polite"></div>
+</div>
+
+<script>
+// ===== EDITE AQUI: dados da igreja (valores de exemplo) =====
+const C={
+  whatsapp:"5521900000000",
+  pix:"INSERIR-CHAVE-PIX",
+  endereco:"Queimados, RJ — inserir endereço completo",
+  horarios:[["Domingo 09:00","Escola Bíblica Dominical"],["Domingo 19:00","Culto de Adoração"],["Quarta 19:30","Oração e Estudo"]]
+};
+const AT="Gênesis:50,Êxodo:40,Levítico:27,Números:36,Deuteronômio:34,Josué:24,Juízes:21,Rute:4,1 Samuel:31,2 Samuel:24,1 Reis:22,2 Reis:25,1 Crônicas:29,2 Crônicas:36,Esdras:10,Neemias:13,Ester:10,Jó:42,Salmos:150,Provérbios:31,Eclesiastes:12,Cantares:8,Isaías:66,Jeremias:52,Lamentações:5,Ezequiel:48,Daniel:12,Oseias:14,Joel:3,Amós:9,Obadias:1,Jonas:4,Miqueias:7,Naum:3,Habacuque:3,Sofonias:3,Ageu:2,Zacarias:14,Malaquias:4";
+const NT="Mateus:28,Marcos:16,Lucas:24,João:21,Atos:28,Romanos:16,1 Coríntios:16,2 Coríntios:13,Gálatas:6,Efésios:6,Filipenses:4,Colossenses:4,1 Tessalonicenses:5,2 Tessalonicenses:3,1 Timóteo:6,2 Timóteo:4,Tito:3,Filemom:1,Hebreus:13,Tiago:5,1 Pedro:5,2 Pedro:3,1 João:5,2 João:1,3 João:1,Judas:1,Apocalipse:22";
+
+const $=(s,e=document)=>e.querySelector(s),$$=(s,e=document)=>[...e.querySelectorAll(s)];
+const store={get(k){try{return localStorage.getItem(k)}catch(e){return null}},set(k,v){try{localStorage.setItem(k,v)}catch(e){}}};
+const norm=s=>s.normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase();
+let tt;function toast(m){const t=$("#toast");t.textContent=m;t.classList.add("show");clearTimeout(tt);tt=setTimeout(()=>t.classList.remove("show"),2400)}
+
+// Tema
+const root=document.documentElement,sv=store.get("pipq-theme");
+if(sv==="dark"||sv==="light")root.dataset.theme=sv;
+const dark=()=>root.dataset.theme?root.dataset.theme==="dark":matchMedia("(prefers-color-scheme:dark)").matches;
+const meta=()=>{$('meta[name="theme-color"]').content=dark()?"#0f1626":"#f5f3ed"};
+$("#theme").onclick=()=>{const t=dark()?"light":"dark";root.dataset.theme=t;store.set("pipq-theme",t);meta()};meta();
+
+// Dados da igreja
+$$(".hor").forEach(el=>el.innerHTML=C.horarios.map(h=>`<div class="row"><span>${h[0]}</span><span>${h[1]}</span></div>`).join(""));
+const wa="https://wa.me/"+C.whatsapp;$("#wa1").href=wa;$("#wa2").href=wa;
+$("#end").textContent=C.endereco;const okp=!/^INSERIR/.test(C.pix);$("#pixk").textContent=okp?C.pix:"Chave ainda não cadastrada";$("#pix").hidden=!okp;
+$("#map").href="https://www.google.com/maps/search/?api=1&query="+encodeURIComponent(C.endereco);
+$("#pix").onclick=async()=>{try{await navigator.clipboard.writeText(C.pix);toast("Chave PIX copiada.")}catch(e){toast("Copie manualmente: "+C.pix)}};
+
+// Dados (JSON em /data) e utilidades
+const D={},enc=encodeURIComponent,esc=s=>s.replace(/[&<>]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;"}[c]));
+const load=f=>D[f]||(D[f]=fetch("data/"+f+".json").then(r=>{if(!r.ok)throw 0;return r.json()}).catch(e=>{delete D[f];throw e}));
+const fail=el=>el.innerHTML='<p class="empty">Não foi possível carregar os dados. Abra o app pelo endereço do site (não pelo arquivo no computador) ou conecte-se à internet uma vez.</p>';
+const copy=async t=>{try{await navigator.clipboard.writeText(t);toast("Copiado.")}catch(e){toast("Não foi possível copiar.")}};
+const fsz=d=>{const v=Math.min(30,Math.max(14,(+store.get("pipq-fs")||18)+d));store.set("pipq-fs",v);root.style.setProperty("--fs",v)};
+root.style.setProperty("--fs",+store.get("pipq-fs")||18);
+document.addEventListener("click",e=>{const b=e.target.closest("[data-fs]");if(b)fsz(+b.dataset.fs);const f=e.target.closest(".star");if(f)fav(f.dataset.id)});
+
+// Bíblia (ARA e NAA)
+const CC=(AT+","+NT).split(",").map(x=>+x.split(":")[1]),BN=(AT+","+NT).split(",").map(x=>x.split(":")[0]);
+const VN={ara:"Almeida Revista e Atualizada",naa:"Nova Almeida Atualizada"};
+let bv=store.get("pipq-ver")==="naa"?"naa":"ara";
+const ref=(i,c,v)=>`#biblia/${i}/${c}`+(v?"/"+v:"");
+const bh=(t,a,b)=>`<h2>${t}</h2>`+BN.slice(a,b).map((n,k)=>{const i=a+k;return `<details data-n="${n}"><summary>${n}<small>${CC[i]} cap.</small></summary><div class="ch">${Array.from({length:CC[i]},(_,c)=>`<a href="${ref(i,c+1)}">${c+1}</a>`).join("")}</div></details>`}).join("");
+$("#bl").innerHTML=bh("Antigo Testamento",0,39)+bh("Novo Testamento",39,66);
+$$("#bvs .chip").forEach(b=>b.onclick=()=>{bv=b.dataset.v;store.set("pipq-ver",bv);route()});
+let bt;$("#bq").oninput=()=>{clearTimeout(bt);bt=setTimeout(bsearch,200)};
+async function bsearch(){
+  const q=norm($("#bq").value.trim()),R=$("#br"),H=$$("#bl h2"),L=$$("#bl details");R.innerHTML="";L.forEach(d=>d.hidden=false);H.forEach(h=>h.hidden=false);
+  if(!q)return;
+  const m=q.match(/^(.+?)\s+(\d+)(?:[:.,\s]+(\d+))?$/),find=t=>t==="jo"?42:BN.findIndex(n=>norm(n).startsWith(t));
+  if(m){const i=find(m[1]),c=+m[2];if(i>=0&&c>=1&&c<=CC[i]){R.innerHTML=`<a class="act" href="${ref(i,c,+m[3]||0)}">${BN[i]} ${c}${m[3]?":"+m[3]:""}</a>`;L.forEach(d=>d.hidden=true);H.forEach(h=>h.hidden=true);return}}
+  let n=0;L.forEach(d=>{const ok=norm(d.dataset.n).includes(q);d.hidden=!ok;n+=ok});H.forEach(h=>h.hidden=true);
+  if(n||q.length<3)return;
+  try{const d=await load("biblia-"+bv),out=[];let more=false;
+    d.forEach((b,i)=>b.chapters.forEach((c,j)=>c.forEach((v,k)=>{if(norm(v).includes(q)){if(out.length<50)out.push(`<a class="res" href="${ref(i,j+1,k+1)}"><b>${BN[i]} ${j+1}:${k+1}</b><span>${esc(v)}</span></a>`);else more=true}})));
+    if(norm($("#bq").value.trim())!==q)return;
+    R.innerHTML=out.length?out.join("")+(more?'<p class="note">Mostrando os 50 primeiros resultados.</p>':""):'<p class="empty">Nada encontrado.</p>'}catch(e){fail(R)}}
+async function bible(p){
+  const i=p[1],home=i===undefined;$("#bhome").hidden=!home;$("#bc").hidden=home;
+  $("#bver").textContent=VN[bv];$$("#bvs .chip").forEach(b=>b.setAttribute("aria-pressed",b.dataset.v===bv));
+  if(home){const l=store.get("pipq-last");$("#bcont").innerHTML=l?`<a class="act" href="#biblia/${l}">Continuar: ${BN[l.split("/")[0]]} ${l.split("/")[1]}</a>`:"";return}
+  const bi=+i,ch=+p[2],v=+p[3],el=$("#bc");
+  if(!(bi>=0&&bi<66&&ch>=1&&ch<=CC[bi])){location.hash="#biblia";return}
+  el.innerHTML='<p class="empty">Carregando…</p>';
+  try{const d=await load("biblia-"+bv),t=d[bi].chapters[ch-1];store.set("pipq-last",bi+"/"+ch);
+    const pv=ch>1?[bi,ch-1]:bi>0?[bi-1,CC[bi-1]]:null,nx=ch<CC[bi]?[bi,ch+1]:bi<65?[bi+1,1]:null,nv=(x,l)=>x?`<a class="chip" href="${ref(x[0],x[1])}">${l}</a>`:"<span></span>";
+    el.innerHTML=`<h2 class="rt">${BN[bi]} ${ch}</h2><div class="tools"><a class="chip" href="#biblia">Livros</a><button class="chip" data-fs="-2" aria-label="Diminuir letra">A−</button><button class="chip" data-fs="2" aria-label="Aumentar letra">A+</button><button class="chip" id="cp" hidden>Copiar versículos</button></div><div class="vs">${t.map((x,k)=>`<p data-v="${k+1}"><sup>${k+1}</sup>${esc(x)}</p>`).join("")}</div><div class="pn">${nv(pv,"‹ Anterior")}${nv(nx,"Próximo ›")}</div>`;
+    const vs=$(".vs",el);vs.onclick=e=>{const q=e.target.closest("p");if(!q)return;q.classList.toggle("sel");$("#cp").hidden=!$(".sel",vs)};
+    $("#cp").onclick=()=>{const s=$$(".sel",vs);copy(s.map(q=>q.lastChild.textContent).join(" ")+`\n${BN[bi]} ${ch}:${s.map(q=>q.dataset.v).join(",")} (${bv.toUpperCase()})`)};
+    const hl=v&&$(`.vs p[data-v="${v}"]`,el);if(hl){hl.classList.add("hl");hl.scrollIntoView({block:"center"})}
+  }catch(e){fail(el)}}
+
+// Hinário (Novo Cântico) - favoritos guardados pelo número
+let HY,HX,onlyFav=false,favs=[];try{favs=JSON.parse(store.get("pipq-fav")||"[]").map(x=>String(x).replace(/^0+(?=\d)/,""))}catch(e){}
+const ti=h=>{const t=h.titulo.replace(/\.$/,"");return t[0].toUpperCase()+t.slice(1)};
+const star='<svg aria-hidden="true" viewBox="0 0 24 24"><path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1L3.2 9.5l6.1-.9z"/></svg>';
+const sbtn=h=>`<button class="star" data-id="${esc(h.numero)}" aria-label="Favoritar ${esc(ti(h))}" aria-pressed="${favs.includes(h.numero)}">${star}</button>`;
+function fav(id){const on=!favs.includes(id);favs=on?[...favs,id]:favs.filter(x=>x!==id);store.set("pipq-fav",JSON.stringify(favs));$$(`.star[data-id="${id}"]`).forEach(b=>b.setAttribute("aria-pressed",on));toast(on?"Adicionado aos favoritos.":"Removido dos favoritos.");if(onlyFav&&HY)hymns()}
+function hymns(){const q=norm($("#hq").value.trim()),num=/^\d+$/.test(q);let n=0;$$("#hl li").forEach((li,k)=>{const ok=(num?HY[k].numero.startsWith(q):HX[k].includes(q))&&(!onlyFav||favs.includes(li.dataset.n));li.hidden=!ok;n+=ok});$("#hempty").hidden=n>0}
+$("#hq").oninput=()=>HY&&hymns();
+$("#fav").onclick=e=>{onlyFav=!onlyFav;e.currentTarget.setAttribute("aria-pressed",onlyFav);HY&&hymns()};
+async function hymn(p){
+  const home=p[1]===undefined;$("#hhome").hidden=!home;$("#hd").hidden=home;
+  try{if(!HY){HY=await load("novo-cantico");HX=HY.map(h=>norm(h.numero+" "+h.titulo+" "+h.letra));
+    $("#hl").innerHTML=HY.map(h=>`<li class="song" data-n="${esc(h.numero)}"><a href="#hinario/${enc(h.numero)}"><span class="num">${esc(h.numero)}</span><div><strong>${esc(ti(h))}</strong><small>${esc(h.letra.split("\n")[0])}</small></div></a>${sbtn(h)}</li>`).join("")}}catch(e){fail($(home?"#hl":"#hd"));return}
+  if(home)return hymns();
+  const k=HY.findIndex(h=>h.numero===p[1]);if(k<0){location.hash="#hinario";return}
+  const h=HY[k],nb=(x,l)=>x?`<a class="chip" href="#hinario/${enc(x.numero)}">${l}</a>`:"<span></span>";
+  $("#hd").innerHTML=`<h2 class="rt">${esc(h.numero)} · ${esc(ti(h))}</h2><div class="tools"><a class="chip" href="#hinario">Hinos</a><button class="chip" data-fs="-2" aria-label="Diminuir letra">A−</button><button class="chip" data-fs="2" aria-label="Aumentar letra">A+</button>${sbtn(h)}<button class="chip" id="hc">Copiar</button></div><div class="lyr">${esc(h.letra)}</div><div class="pn">${nb(HY[k-1],"‹ "+(HY[k-1]||{}).numero)}${nb(HY[k+1],(HY[k+1]||{}).numero+" ›")}</div>`;
+  $("#hc").onclick=()=>copy(h.numero+" - "+ti(h)+"\n\n"+h.letra)}
+
+// Instalação e modo offline (PWA)
+let dp;addEventListener("beforeinstallprompt",e=>{e.preventDefault();dp=e;$("#inst").hidden=false});
+$("#inst").onclick=async()=>{dp.prompt();await dp.userChoice;dp=null;$("#inst").hidden=true};
+if("serviceWorker"in navigator)addEventListener("load",()=>navigator.serviceWorker.register("sw.js").then(()=>navigator.serviceWorker.ready).then(()=>{$("#off").textContent="Pronto para uso sem internet.";if(!store.get("pipq-off")){store.set("pipq-off","1");toast("Pronto para usar offline.")}}).catch(()=>{}));
+
+// Navegação por #hash (o botão voltar funciona)
+const T=[["inicio","Início","M3 11l9-8 9 8v10H3z"],["biblia","Bíblia","M4 5h6a2 2 0 012 2v12a2 2 0 00-2-2H4zM20 5h-6a2 2 0 00-2 2v12a2 2 0 012-2h6z"],["hinario","Hinário","M9 18V5l11-2v13M9 18a3 3 0 11-6 0 3 3 0 016 0zm11-2a3 3 0 11-6 0 3 3 0 016 0z"],["estudo","Estudo","M12 3L2 8l10 5 10-5zM6 11v5c0 1.5 3 3 6 3s6-1.5 6-3v-5"],["igreja","Igreja","M12 21s7-6.5 7-12a7 7 0 10-14 0c0 5.5 7 12 7 12zM12 11.5a2.5 2.5 0 100-5 2.5 2.5 0 000 5z"]];
+$("#nav").innerHTML=T.map(([id,l,p])=>`<a href="#${id}" data-id="${id}"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="${p}"/></svg>${l}</a>`).join("");
+function route(){const p=location.hash.slice(1).split("/").map(decodeURIComponent);let id=p[0];if(!T.some(t=>t[0]===id))id="inicio";$$("main>section").forEach(s=>s.hidden=s.id!==id);$$("#nav a").forEach(a=>a.dataset.id===id?a.setAttribute("aria-current","page"):a.removeAttribute("aria-current"));scrollTo(0,0);if(id==="biblia")bible(p);if(id==="hinario")hymn(p)}
+addEventListener("hashchange",route);route();
+</script>
+</body>
+</html>
